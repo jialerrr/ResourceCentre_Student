@@ -123,36 +123,46 @@ public class ResourceCentre {
 	}
 
 	//================================= Option 1 View items (CRUD- Read) =================================
-	public static String retrieveAllCamcorder(ArrayList<Camcorder> camcorderList) {
-		String output = "";
+		public static String retrieveAllCamcorder(ArrayList<Camcorder> camcorderList) {
+			String output = "";
 
-		for (int i = 0; i < camcorderList.size(); i++) {
+			for (int i = 0; i < camcorderList.size(); i++) {
 
-			output += String.format("%-10s %-30s %-10s %-10s %-20d\n", camcorderList.get(i).getAssetTag(),
-					camcorderList.get(i).getDescription(), 
-					ResourceCentre.showAvailability(camcorderList.get(i).getIsAvailable()),
-					camcorderList.get(i).getDueDate(),camcorderList.get(i).getOpticalZoom());
+				output += String.format("%-10s %-30s %-10s %-10s %-20d\n", camcorderList.get(i).getAssetTag(),
+						camcorderList.get(i).getDescription(), 
+						ResourceCentre.showAvailability(camcorderList.get(i).getIsAvailable()),
+						camcorderList.get(i).getDueDate(),camcorderList.get(i).getOpticalZoom());
+			}
+			return output;
 		}
-		return output;
-	}
-	public static void viewAllCamcorder(ArrayList<Camcorder> camcorderList) {
-		ResourceCentre.setHeader("CAMCORDER LIST");
-		String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION",
-				"AVAILABLE", "DUE DATE","OPTICAL ZOOM");
-		 output += retrieveAllCamcorder(camcorderList);	
-		System.out.println(output);
-	}
+		public static void viewAllCamcorder(ArrayList<Camcorder> camcorderList) {
+			ResourceCentre.setHeader("CAMCORDER LIST");
+			String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION",
+					"AVAILABLE", "DUE DATE","OPTICAL ZOOM");
+			 output += retrieveAllCamcorder(camcorderList);	
+			System.out.println(output);
+		}
 
-	public static String retrieveAllChromebook(ArrayList<Chromebook> chromebookList) {
-		String output = "";
-		// write your code here
-		return output;
-	}
-	public static void viewAllChromebook(ArrayList<Chromebook> chromebookList) {
-		
-		String output = retrieveAllChromebook(chromebookList);
-		System.out.println(output);
-	}
+		public static String retrieveAllChromebook(ArrayList<Chromebook> chromebookList) {
+			String output = "";
+			// write your code here
+			for (int i = 0; i < chromebookList.size(); i++) {
+
+				output += String.format("%-10s %-30s %-10s %-10s %-20s\n", chromebookList.get(i).getAssetTag(),
+						chromebookList.get(i).getDescription(), 
+						ResourceCentre.showAvailability(chromebookList.get(i).getIsAvailable()),
+						chromebookList.get(i).getDueDate(),chromebookList.get(i).getOs());
+			}
+			return output;
+		}
+		public static void viewAllChromebook(ArrayList<Chromebook> chromebookList) {
+			ResourceCentre.setHeader("CHROMEBOOK LIST");
+			String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION",
+					"AVAILABLE", "DUE DATE","OPERATING SYSTEM");
+			
+			 output += retrieveAllChromebook(chromebookList);
+			System.out.println(output);
+		}
 
 	//================================= Option 2 Add an item (CRUD - Create) =================================
 	public static Camcorder inputCamcorder() {
